@@ -1,0 +1,48 @@
+.chart {
+  position: relative;
+  background: rgb(4, 60, 65);
+}
+.axisBottom, .axisLeft, .lineChart, .axisRight {
+  path {
+    stroke:#fff;
+    stroke-width: 2;
+  }
+  text {
+    fill: #fff;
+  }
+  line {
+    stroke:#fff;
+    stroke-width: 2;
+  }
+}
+
+.lineNB {
+  path {
+    stroke: aqua;
+  }
+}
+
+.lineHZ {
+  path {
+    stroke: #ff0;
+  }
+}
+.barChart {
+  rect {
+    fill: #ff0;
+  }
+}
+.barChartNB {
+  rect {
+    fill: aqua;
+  }
+}
+.grid {
+  line {
+    stroke: rgb(153, 148, 148);
+  }
+  path {
+    stroke: transparent;
+  }
+}
+
