@@ -23,7 +23,9 @@ class Grid extends Component {
     this.renderGrid();
   }
   renderGrid() {
-    const { y, svgWidth, svgHeight, x } = this.props;
+    const {
+      y, svgWidth, svgHeight, x,
+    } = this.props;
     const axisY = d3.axisLeft(y).tickSize(-svgWidth).tickFormat('');
     const axisX = d3.axisBottom(x).tickSize(svgHeight).tickFormat('');
     this.grid.append('g')
