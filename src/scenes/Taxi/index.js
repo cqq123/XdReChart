@@ -47,12 +47,18 @@ const Taxi = () => (
         paddingOuter={0.1}
       >
         <Bar
+          className={style.barRect}
           dataKey="ningbo"
           fill="#00d2d9"
+          rx={4}
+          ry={4}
         />
         <Bar
+          className={style.barRect}
           dataKey="hangzhou"
           fill="#51a3f4"
+          rx={4}
+          ry={4}
         />
       </Group>
       <LineChart

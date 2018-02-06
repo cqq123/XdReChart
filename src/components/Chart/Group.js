@@ -35,6 +35,7 @@ class Group extends Component {
                       idx,
                       svgHeight,
                       data: data[i][child.props.dataKey],
+                      className: child.props.className,
                     })
                   );
               })

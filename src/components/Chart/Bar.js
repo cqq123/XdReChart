@@ -37,10 +37,12 @@ class Bar extends Component {
   }
   renderRect() {
     const {
-      x1, idx, y, data, svgHeight, fill,
+      x1, idx, y, data, svgHeight, fill, rx, ry
     } = this.props;
     this.rect
       .attr('fill', fill)
+      .attr('rx', rx)
+      .attr('ry', ry)
       .attr('x', x1(idx))
       .attr('width', 0)
       .transition()
@@ -51,8 +53,12 @@ class Bar extends Component {
   }
 
   render() {
+    const { className } = this.props;
     return (
-      <rect ref={(a) => { this.element = a; }} />
+      <rect
+        className={className}
+        ref={(a) => { this.element = a; }}
+      />
     );
   }
 }
@@ -64,6 +70,9 @@ Bar.propTypes = {
   svgHeight: PropTypes.number,
   dataKey: PropTypes.string,
   fill: PropTypes.string,
+  className: PropTypes.string,
+  rx: PropTypes.number,
+  ry: PropTypes.number,
 };
 
 export default Bar;
