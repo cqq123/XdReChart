@@ -13,13 +13,13 @@ class BarChart extends Component {
       <g
         className={className}
         ref={(a) => { this.g = a; }}
-        transform={`translate(${x.bandwidth() / 2 + (barIndex - 1) * bandWidth - barCount * bandWidth / 2}, 0)`}
+        // transform={`translate(${this.props.x.bandwidth() / 2}, 0)`}
       >
         {
           data.map((a, i) => (
             <rect
               key={i}
-              width={bandWidth}
+              width={x.bandwidth()}
               height={svgHeight - y(a)}
               x={x(i)}
               y={y(a)}

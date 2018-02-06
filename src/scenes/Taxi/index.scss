@@ -18,13 +18,13 @@
 
 .lineNB {
   path {
-    stroke: aqua;
+    stroke: #ff0;
   }
 }
 
 .lineHZ {
   path {
-    stroke: #ff0;
+    stroke: #f00;
   }
 }
 .barChart {
@@ -45,4 +45,9 @@
     stroke: transparent;
   }
 }
-
+.percentCircle {
+  circle {
+    fill: #fff;
+    stroke: #f00;
+  }
+}

@@ -67,7 +67,8 @@ class Chart extends Component {
     const { data } = this.props;
     return d3.scaleBand()
       .range([0, this.svgWidth])
-      .domain(d3.range(0, data.length));
+      .domain(d3.range(0, data.length))
+      .padding(0.1);
   }
 
   init() {
@@ -137,26 +138,13 @@ class Chart extends Component {
       }
       if (child.type.displayName === 'Line') {
         const { dataKey, axis } = child.props;
-        if (this.axisRight) {
+        if (axis) {
           y.domain([0, d3.max(data.map(a => a[axis]))]);
         }
         return React.cloneElement(child, {
           x: this.x,
           y,
           data: data.map(a => a[dataKey]),
-        });
-      }
-      if (child.type.displayName === 'Bar') {
-        const { dataKey, axis } = child.props;
-        if (this.axisRight) {
-          y.domain([0, d3.max(data.map(a => a[axis]))]);
-        }
-        return React.cloneElement(child, {
-          x: this.x,
-          y,
-          data: data.map(a => a[dataKey]),
-          svgHeight: this.svgHeight,
-          barCount: this.barCount,
         });
       }
       if (child.type.displayName === 'Grid') {
@@ -168,7 +156,10 @@ class Chart extends Component {
         });
       }
       if (child.type.displayName === 'Circle') {
-        const { dataKey } = child.props;
+        const { dataKey, axis } = child.props;
+        if (axis) {
+          y.domain([0, d3.max(data.map(a => a[axis]))]);
+        }
         return React.cloneElement(child, {
           x: this.x,
           y,
@@ -176,18 +167,25 @@ class Chart extends Component {
         });
       }
       if (child.type.displayName === 'AxisLeft') {
-        const { dataKey } = child.props;
-        if (this.axisRight) {
-          y.domain([0, d3.max(data.map(a => a[dataKey]))]);
-        }
         return React.cloneElement(child, {
           y,
         });
       }
+      if (child.type.displayName === 'Group') {
+        return React.cloneElement(child, {
+          x: this.x,
+          y,
+          data,
+          svgHeight: this.svgHeight,
+        });
+      }
       if (child.type.displayName === 'AxisRight') {
-        const { dataKey } = child.props;
+        const { dataKey, max } = child.props;
         if (dataKey) {
           y.domain([0, d3.max(data.map(a => a[dataKey]))]);
+        }
+        if (max) {
+          y.domain([0, max]);
         }
         return React.cloneElement(child, {
           y,

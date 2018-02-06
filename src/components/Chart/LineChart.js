@@ -19,22 +19,26 @@ class LineChart extends Component {
       !_.isEqual(prevProps.y.domain(), y.domain()) ||
       !_.isEqual(prevProps.y.range(), y.range()) ||
       !_.isEqual(prevProps.data, data)) {
-      this.renderLine();
+      this.valueLine.x((d, i) => x(i))
+        .y(d => y(d));
+      this.line
+        .attr('d', this.valueLine(data));
     }
   }
   init() {
     this.line = d3.select(this.lineChart)
       .append('path');
+    this.valueLine = d3.line();
     this.renderLine();
   }
   renderLine() {
     const { data, x, y } = this.props;
-    const valueLine = d3.line()
+    this.valueLine
       .x((d, i) => x(i))
-      .y(d => y(d))
-      .curve(d3.curveNatural);
+      .y(d => y(d));
+      // .curve(d3.curveNatural);
     this.line
-      .attr('d', valueLine(data));
+      .attr('d', this.valueLine(data));
     const totalLength = this.line.node().getTotalLength();
     this.line
       .attr('stroke-dasharray', totalLength)

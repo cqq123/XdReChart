@@ -1,4 +1,5 @@
 // import { fetchRequest } from '../../../../utils';
+import * as d3 from 'd3';
 /* eslint-disable */
 import { fetchRequest } from 'utils';
 import json from 'data/aa.json';
@@ -6,6 +7,8 @@ import json from 'data/aa.json';
 
 export const ADD_ONE = 'bicycle/ADD_ONE';
 export const REDUCE_ONE = 'bicycle/REDUCE_ONE';
+
+
 
 
 // export const addAction = () => ({
@@ -33,6 +36,11 @@ export const reduceAction = () => ({
 
 export const addAction = () =>
   async (dispatch) => {
+    d3.csv('base/data', (d, i, columns) => {
+      console.log(d, '----d');
+    }, (err, data) => {
+      console.log(data, '---------d');
+    });
     const aa = await fetchRequest('base/distance', {
       user: 111,
       sign: 222,

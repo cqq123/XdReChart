@@ -22,6 +22,7 @@ for (let i = 0; i < pathKey.length; i++) {
       req.pipe(request(url)).pipe(res);
     } else {
       const data = require(configPath[pathKey[i]]);
+      console.log(data, '------');
       res.send(data);
     }
   });

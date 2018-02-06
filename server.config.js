@@ -4,5 +4,6 @@ module.exports = {
     '/base/distance': api,
     '/base/distance2metro': api,
     '/base/distance2': './data/aa.json',
+    '/base/data': './data/test.csv',
   },
-};
+}

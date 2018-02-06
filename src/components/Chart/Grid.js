@@ -26,6 +26,7 @@ class Grid extends Component {
     const {
       y, svgWidth, svgHeight, x,
     } = this.props;
+    this.grid.selectAll('g').remove();
     const axisY = d3.axisLeft(y).tickSize(-svgWidth).tickFormat('');
     const axisX = d3.axisBottom(x).tickSize(svgHeight).tickFormat('');
     this.grid.append('g')

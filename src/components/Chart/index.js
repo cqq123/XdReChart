@@ -9,4 +9,6 @@ export AxisRight from './AxisRight';
 export Circle from './Circle';
 export BarChart from './BarChart';
 export Grid from './Grid';
+export Group from './Group';
+export Bar from './Bar';
 
